@@ -5,7 +5,7 @@
 ## Introduction
 This repository contains the source code and an interactive demo for the upcoming EGSR paper:
 
-> **[Guided ReSTIR FG+: Photon Resampling for Large Scenes and Many Lights (Preprint)](https://www2.in.tu-clausthal.de/~cgstore/Kern2026GuidedReSTIRFGPlus.pdf)** <br>
+> **[Guided ReSTIR FG+: Photon Resampling for Large Scenes and Many Lights](https://diglib.eg.org/items/f4bbd38a-fda9-4c43-afc9-dd31e3c5eec1)** <br>
 > René Kern, Felix Brüll, Jonas Kastning, Thorsten Grosch <br>
 > TU Clausthal
 
@@ -27,6 +27,7 @@ You can download the executable demo from the [Releases Page](https://github.com
 * [Testing with more Scenes](#testing-with-more-scenes)
 * [Falcor Prerequisites](#falcor-prerequisites)
 * [Building Falcor](#building-falcor)
+* [Contact](#contact)
 
 ## Supplemental Resources
 In addition to the [supplemental video](https://youtu.be/UZ3_TiyZPmA), we provide comparison videos for each scene using identical camera paths, as well as a [15-second equal-time comparison](https://youtu.be/EnGDO9XE8cM).
@@ -107,3 +108,9 @@ Falcor uses the [CMake](https://cmake.org) build system. Additional information 
 
 ### Visual Studio
 If you are working with Visual Studio 2022 or 2026, you can setup a native Visual Studio solution by running `setup_vs2022.bat` or `setup_vs2026.bat` after cloning this repository. The solution files are written to `build/windows-vs2022` or `build/windows-vs2026` and the binary output is located in `build/windows-vs2022/bin` or `build/windows-vs2026/bin`.
+
+## Contact
+
+If you have any questions about the paper, the implementation, or encounter any issues while using this repository, please feel free to get in touch.
+
+Email: rene.kern@tu-clausthal.de
