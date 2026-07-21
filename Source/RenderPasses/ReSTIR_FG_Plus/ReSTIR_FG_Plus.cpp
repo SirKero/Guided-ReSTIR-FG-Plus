@@ -355,7 +355,7 @@ void ReSTIR_FG_Plus::execute(RenderContext* pRenderContext, const RenderData& re
 
     //Copy Camera data for splatting
     const CameraData& camData = mpScene->getCamera()->getData();
-    mTemporalCameraViewProjection = camData.viewProjMat;
+    mTemporalCameraViewProjection = camData.viewProjMatNoJitter;
     mTemporalCameraPosition = camData.posW;
     mTemporalCameraForward = math::normalize(camData.cameraW);
 
