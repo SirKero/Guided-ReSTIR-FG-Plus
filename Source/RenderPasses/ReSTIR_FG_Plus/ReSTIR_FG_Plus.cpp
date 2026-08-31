@@ -161,6 +161,18 @@ void ReSTIR_FG_Plus::renderUI(Gui::Widgets& widget) {
             "Maximum Path length for a initial path sample. A path sample stops, when it encounters a diffuse surface"
         );
 
+        if (auto group2 = group.group("NEE Options"))
+        {
+            mRebuildLightSampler |= group.dropdown("NEE Sampler", mEmissiveLightSamplerType);
+            if (mEmissiveLightSamplerType == EmissiveLightSamplerType::LightBVH)
+            {
+                if (auto group3 = group.group("NEE Sampler Options"))
+                {
+                    mpEmissiveLightSampler->renderUI(group3);
+                }
+            }
+        }
+
         if (auto group2 = group.group("Path Resampling Options"))
         {
             group2.checkbox("Enable Resampling", mOptions.enablePathResampling);

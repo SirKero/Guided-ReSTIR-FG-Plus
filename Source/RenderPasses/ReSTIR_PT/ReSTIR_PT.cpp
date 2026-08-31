@@ -131,6 +131,17 @@ void ReSTIR_PT::renderUI(Gui::Widgets& widget)
             "Maximum Path length for a initial path sample. A path sample stops, when it encounters a diffuse surface"
         );
 
+        if (auto group2 = group.group("NEE Options"))
+        {
+            mRebuildLightSampler |= group.dropdown("NEE Sampler", mEmissiveLightSamplerType);
+            if (mEmissiveLightSamplerType == EmissiveLightSamplerType::LightBVH)
+            {
+                if (auto group3 = group.group("NEE Sampler Options"))
+                {
+                    mpEmissiveLightSampler->renderUI(group3);
+                }
+            }
+        }
         
         group.checkbox("Enable Resampling", mOptions.enableResampling);
         group.var("Confidence Cap", mOptions.confidenceCap);
@@ -284,9 +295,9 @@ void ReSTIR_PT::execute(RenderContext* pRenderContext, const RenderData& renderD
 
 void ReSTIR_PT::resetAllRenderPasses()
 {
-    mTraceInitialPathPass = RayTraceProgramHelper::create();      
-    mTraceShiftPass[0] = RayTraceProgramHelper::create();             
-    mTraceShiftPass[1] = RayTraceProgramHelper::create();             
+    mTraceInitialPathPass = RayTraceProgramHelper::create();
+    for(uint i=0; i<4; i++)
+        mTraceShiftPass[i] = RayTraceProgramHelper::create();          
 
     mpResampleReservoirPass.reset();    
     mpEvaluateReservoirsPass.reset();    
