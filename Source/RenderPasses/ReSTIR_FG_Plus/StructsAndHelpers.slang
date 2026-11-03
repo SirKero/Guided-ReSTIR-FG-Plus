@@ -30,6 +30,7 @@ enum ReservoirPathFlags : uint {
     isRadianceEstimate = 0x200000,         // 1<<21
     isCaustic = 0x400000,                  // 1<<22
     isNEE = 0x800000,                      // 1<<23
+    isDirectNEE = 0x1000000,               // 1<<24
 }
 
 //
@@ -214,6 +215,14 @@ struct ReservoirFlags {
         set {
             flags &= ~(uint)ReservoirPathFlags::isNEE; // Clear bit
             flags |= (newValue ? (uint)ReservoirPathFlags::isNEE : 0);
+        }
+    }
+
+    property bool isDirectNEE {
+        get { return (flags & (uint)ReservoirPathFlags::isDirectNEE) > 0; }
+        set {
+            flags &= ~(uint)ReservoirPathFlags::isDirectNEE; // Clear bit
+            flags |= (newValue ? (uint)ReservoirPathFlags::isDirectNEE : 0);
         }
     }
 }
